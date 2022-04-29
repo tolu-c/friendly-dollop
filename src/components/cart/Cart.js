@@ -1,17 +1,18 @@
 import { XIcon } from '@heroicons/react/solid'
+import Modal from '../ui/Modal';
 
 function Cart(props) {
   const cartItems = (
-    <ul className="">
-      {[{ id: "c1", name: "sushi", amount: 2, price: 12.99 }].map((item) => (
-        <li>{item.name}</li>
+    <ul className=''>
+      {[{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }].map((item) => (
+        <li key={item.id}>{item.name}</li>
       ))}
     </ul>
   );
 
   return (
-    <div>
-      cart items
+    <Modal>
+      {cartItems}
       <div className="">
         <span className=''>Total Amount</span>
         <span>35.62</span>
@@ -21,7 +22,7 @@ function Cart(props) {
         <XIcon className='h-4 w-4' />
         <button className=''>order</button>
       </div>
-    </div>
+    </Modal>
   );
 }
 
