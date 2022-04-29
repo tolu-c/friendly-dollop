@@ -19,7 +19,7 @@ function Cart(props) {
       </div>
       <div className="">
         {/* <button>close</button> */}
-        <XIcon className='h-4 w-4' />
+        <XIcon className='h-4 w-4 absolute top-2 right-2 text-red-500' />
         <button className=''>order</button>
       </div>
     </Modal>
