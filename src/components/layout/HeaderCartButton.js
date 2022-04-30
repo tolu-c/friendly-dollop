@@ -15,7 +15,7 @@ function HeaderCartButton(props) {
   const animateBump = "animate-bump";
 
   useEffect(() => {
-    if (cartCtx.items.length === 0) {
+    if (items.length === 0) {
       return;
     }
     setBtnIsBumped(true);
@@ -23,7 +23,7 @@ function HeaderCartButton(props) {
     const timer = setTimeout(() => {
       setBtnIsBumped(false);
     }, 300);
-    
+
     return () => {
       clearTimeout(timer)
     }
