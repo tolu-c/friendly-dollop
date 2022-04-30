@@ -13,11 +13,10 @@ const Backdrop = (props) => {
 const ModalOverLay = (props) => {
   return (
     <div className="absolute top-10 left-14 z-50 bg-white w-5/6  p-2 rounded-md shadow-lg animate-show">
-      <div>{props.children}</div>
+      <div className="flex flex-col gap-2 justify-center w-full text-center">{props.children}</div>
     </div>
   );
 };
-
 
 const portalElement = document.getElementById("overlay");
 
