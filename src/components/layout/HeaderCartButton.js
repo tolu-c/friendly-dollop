@@ -1,16 +1,39 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartIcon from "../cart/CartIcon";
 import CartContext from "../../store/cart-context";
 
 function HeaderCartButton(props) {
+  const [btnIsBumped, setBtnIsBumped] = useState(false);
+
   const cartCtx = useContext(CartContext);
-  const numberOfCartItem = cartCtx.items.reduce((currentNumber, item) => {
-    return currentNumber + item.amount
-  }, 0)
+  const { items } = cartCtx;
+
+  const numberOfCartItem = items.reduce((currentNumber, item) => {
+    return currentNumber + item.amount;
+  }, 0);
+
+  const animateBump = "animate-bump";
+
+  useEffect(() => {
+    if (cartCtx.items.length === 0) {
+      return;
+    }
+    setBtnIsBumped(true);
+
+    const timer = setTimeout(() => {
+      setBtnIsBumped(false);
+    }, 300);
+    
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [items]);
 
   return (
     <button
-      className="flex items-center space-x-3 cursor-pointer"
+      className={`flex items-center space-x-3 cursor-pointer ${
+        btnIsBumped ? animateBump : ""
+      }`}
       onClick={props.onClick}
     >
       <div className="relative">

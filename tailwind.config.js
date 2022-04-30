@@ -1,3 +1,5 @@
+const { scale } = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -5,6 +7,7 @@ module.exports = {
       animation: {
         meals: "appear 1s ease-out forwards",
         show: "showfromup 1s ease-in-out forwards",
+        bump: "bump 300ms ease-out",
       },
       keyframes: {
         appear: {
@@ -26,6 +29,13 @@ module.exports = {
             opacity: 1,
             transform: "translateY(3rem)",
           },
+        },
+        bump: {
+          "0%": { transform: "scale(1)" },
+          "10%": { transform: "scale(0.9)" },
+          "30%": { transform: "scale(1.1)" },
+          "50%": { transform: "scale(1.15)" },
+          "100%": { transform: "scale(1)" },
         },
       },
     },
