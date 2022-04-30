@@ -7,7 +7,7 @@ function Header(props) {
     <Fragment>
       <header className="w-full flex justify-between items-center text-white bg-orange-600 px-12 py-3">
         <h1 className='text-2xl font-bold font-sans'>MyMeals</h1>
-        <HeaderCartButton />
+        <HeaderCartButton onClick={props.onShowCart} />
       </header>
 
       <div className="w-full">
