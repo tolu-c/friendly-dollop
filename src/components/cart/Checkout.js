@@ -1,14 +1,24 @@
-import React from "react";
+import {useRef} from "react";
 
 function Checkout(props) {
+  const nameRef = useRef()
+  const streetRef = useRef();
+  const postalCodeRef = useRef();
+  const cityRef = useRef();
+
   const confirmHandler = (event) => {
     event.preventDefault();
+
+    const enteredName = nameRef.current.value
+    const enteredStreet = streetRef.current.value;
+    const enteredPostalCode = postalCodeRef.current.value;
+    const enteredCity = cityRef.current.value;
   };
 
   return (
     <form
       onSubmit={confirmHandler}
-      className="w-full border-amber-200 border-t flex flex-col items-center space-y-3 overflow-y-scroll"
+      className="w-full border-amber-200 border-t flex flex-col items-center space-y-3 overflow-y-scroll h-52"
     >
       <div className="w-5/6 flex space-x-2 items-center mt-2">
         <label
@@ -20,6 +30,7 @@ function Checkout(props) {
         <input
           type="text"
           id="name"
+          ref={nameRef}
           className="grow focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-base font-sans text-slate-700"
         />
       </div>
@@ -34,6 +45,7 @@ function Checkout(props) {
         <input
           type="text"
           id="street"
+          ref={streetRef}
           className="grow focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-base font-sans text-slate-700"
         />
       </div>
@@ -48,6 +60,7 @@ function Checkout(props) {
         <input
           type="text"
           id="postalCode"
+          ref={postalCodeRef}
           className="grow focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-base font-sans text-slate-700"
         />
       </div>
@@ -61,6 +74,7 @@ function Checkout(props) {
         </label>
         <input
           type="text"
+          ref={cityRef}
           id="city"
           className="grow focus:border-amber-400 focus:ring-1 focus:ring-amber-400 text-base font-sans text-slate-700"
         />
