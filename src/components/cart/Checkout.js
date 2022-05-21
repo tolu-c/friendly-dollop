@@ -56,6 +56,7 @@ function Checkout(props) {
     });
   };
 
+  // TODO: style form for invalid state
   return (
     <form
       onSubmit={confirmHandler}
