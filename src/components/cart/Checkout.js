@@ -48,6 +48,12 @@ function Checkout(props) {
     }
 
     // submit form values
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      postalCode: enteredPostalCode,
+      city: enteredCity,
+    });
   };
 
   return (

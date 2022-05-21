@@ -24,6 +24,17 @@ function Cart(props) {
     setIsCheckout(true);
   };
 
+  const submitOrderHandler = (userData) => {
+    fetch("https://react-http-17f19-default-rtdb.firebaseio.com/orders.json", {
+      method: "POST",
+      body: JSON.stringify({
+        user: userData,
+        orderedItems: cartCtx.items,
+        amount: totalAmount,
+      }),
+    });
+  };
+
   const cartItems = (
     <ul className="text-left flex flex-col gap-4 overflow-y-scroll max-h-80">
       {cartCtx.items.map((item) => (
@@ -46,7 +57,9 @@ function Cart(props) {
         <span className="font-bold text-xl text-gray-600">Total Amount</span>
         <span className="font-bold text-2xl text-gray-800">{totalAmount}</span>
       </div>
-      {isCheckout && <Checkout onCancel={props.onHideCart} />}
+      {isCheckout && (
+        <Checkout onConfirm={submitOrderHandler} onCancel={props.onHideCart} />
+      )}
       <div className="">
         {/* <button>close</button> */}
         <XIcon
